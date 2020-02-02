@@ -31,3 +31,8 @@ steps:
   inputs:
     script: 'AzureDevOpsBackup.exe --token "$(System.AccessToken)" --organization "willhartman" --outdir "$(Build.ArtifactStagingDirectory)" --unzip'
     workingDirectory: '$(Build.SourcesDirectory)/AzureDevOpsBackup/bin/$(buildConfiguration)/'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'DevOps Backup'
+    publishLocation: 'Container'
