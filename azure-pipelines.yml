@@ -26,3 +26,8 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: CmdLine@2
+  inputs:
+    script: 'AzureDevOpsBackup.exe --token "$(System.AccessToken)" --organization "willhartman" --outdir "$(Build.ArtifactStagingDirectory)" --unzip'
+    workingDirectory: '$(Build.SourcesDirectory)/AzureDevOpsBackup/bin/$(buildPlatform)/'
